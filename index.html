@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éducation - Portail de l'Apprentissage</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <script>
+    // Version simplifiée de vérification
+    document.addEventListener('DOMContentLoaded', function() {
+        // Vérifier UNIQUEMENT un élément
+        const hasAccess =
+            localStorage.getItem('somar_access') === 'true' ||
+            sessionStorage.getItem('somar_access') === 'true' ||
+            document.cookie.includes('somar_access=true') ||
+            document.cookie.includes('somar_visitor=');
+       
+        if (!hasAccess) {
+            console.log('❌ Accès non autorisé, redirection...');
+           
+            // Essayer d'abord de forcer l'accès
+            localStorage.setItem('somar_access', 'true');
+           
+            // Attendre un peu
+            setTimeout(function() {
+                // Si toujours pas d'accès, rediriger
+                if (!localStorage.getItem('somar_access')) {
+                    window.location.href = 'index.php';
+                }
+            }, 500);
+        } else {
+            console.log('✅ Accès autorisé');
+        }
+    });
+</script>
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h6>SOMAR Groupe</h6>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#apropos">À propos</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                    <!-- Bouton Menu Hamburger -->
+                    <div class="menu" id="mobile-menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- Bannière -->
+    <section class="banner" id="accueil">
+        <div class="banner-content">
+            <h1>Votre réussite est notre priorité...</h1>
+            <p>Découvrez notre plateforme d'apprentissage innovante conçue pour libérer votre potentiel et vous accompagner dans votre parcours scolaire.</p>
+            <a href="#services" class="btn">Découvrir nos services</a>
+        </div>
+    </section>
+    <!-- À propos -->
+    <section id="apropos">
+        <div class="container">
+            <div class="section-title">
+                <h2>À propos de nous</h2>
+                <p>Nous sommes engagés à fournir une éducation de qualité accessible à tous</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Notre mission éducative</h3>
+                    <p>Fondée par Marcel ALLE, Développeur en formation à ESCAE -Bénin, SOMAR Groupe s'est donnée pour mission de révolutionner l'apprentissage en proposant des solutions éducatives innovantes adaptées aux besoins des apprenants.</p>
+                    <p>Nous croyons que l'éducation est un droit fondamental et nous nous efforçons de rendre l'apprentissage accessible, engageant et efficace pour tous, quels que soient l'âge, le niveau ou les circonstances.</p>
+                    <p>Notre équipe d'éducateurs passionnés et d'experts en pédagogie travaille sans relâche pour développer des contenus et des méthodes d'apprentissage qui stimulent la curiosité et favorisent la réussite.</p>
+                    <a href="#contact" class="btn">Nous contacter</a>
+                </div>
+                <div class="about-image">
+                    <img src="eleve.webp" alt="Étudiants en classe">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos services</h2>
+                <p>Découvrez notre gamme complète de services éducatifs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Cours en ligne</h3>
+                        <p>Accédez à une vaste bibliothèque de cours en ligne dans diverses disciplines, conçus par des experts et adaptés à tous les niveaux.</p>
+                        <div class="service-actions">
+                            <button class="btn-secondary" onclick="openModal('cours-modal')">Voir les cours</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Bibliothèque d'épreuves</h3>
+                        <p>Consultez notre collection d'épreuves précédentes pour vous préparer efficacement à vos examens et concours.</p>
+                        <div class="service-actions">
+                            <button class="btn-secondary" onclick="openModal('epreuves-modal')">Voir les épreuves</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Tutorat personnalisé</h3>
+                        <p>Bénéficiez d'un accompagnement individualisé avec nos tuteurs expérimentés pour progresser à votre rythme.</p>
+                        <div class="service-actions">
+                            <a href="#contact" class="btn-secondary">Prendre rendez-vous</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Orientation scolaire</h3>
+                        <p>Recevez des conseils personnalisés pour choisir la filière qui correspond le mieux à vos aspirations et compétences.</p>
+                        <div class="service-actions">
+                            <a href="#contact" class="btn-secondary">Prendre rendez-vous</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Modal pour les cours -->
+    <div id="cours-modal" class="course-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('cours-modal')">&times;</span>
+            <div class="modal-header">
+                <h2>Cours en ligne disponibles</h2>
+                <p>Téléchargez nos cours gratuitement pour améliorer vos compétences</p>
+            </div>
+            <div class="courses-grid">
+                <div class="course-item">
+                    <h4>Mathématiques - Terminale</h4>
+                    <p>Cours complet de mathématiques pour la classe de Terminale</p>
+                    <a href="cours/mathematiques_terminale.pdf" class="download-btn" download>
+                        <i class="fas fa-download"></i> Télécharger PDF
+                    </a>
+                </div>
+                <div class="course-item">
+                    <h4>Physique-Chimie - 1ère</h4>
+                    <p>Notions fondamentales de physique et chimie</p>
+                    <a href="cours/physique_chimie_1ere.pdf" class="download-btn" download>
+                        <i class="fas fa-download"></i> Télécharger PDF
+                    </a>
+                </div>
+                <div class="course-item">
+                    <h4>Français - BEPC</h4>
+                    <p>Grammaire, conjugaison et compréhension de texte</p>
+                    <a href="cours/francais_bepc.pdf" class="download-btn" download>
+                        <i class="fas fa-download"></i> Télécharger PDF
+                    </a>
+                </div>
+                <div class="course-item">
+                    <h4>Histoire-Géographie - BAC</h4>
+                    <p>Programme complet d'histoire et géographie</p>
+                    <a href="cours/histoire_geo_bac.pdf" class="download-btn" download>
+                        <i class="fas fa-download"></i> Télécharger PDF
+                    </a>
+                </div>
+                <div class="course-item">
+                    <h4>Anglais - Tous niveaux</h4>
+                    <p>Améliorez votre anglais avec nos cours progressifs</p>
+                    <a href="cours/anglais_tous_niveaux.pdf" class="download-btn" download>
+                        <i class="fas fa-download"></i> Télécharger PDF
+                    </a>
+                </div>
+                <div class="course-item">
+                    <h4>Philosophie - Terminale</h4>
+                    <p>Introduction à la philosophie et aux grands auteurs</p>
+                    <a href="cours/philosophie_terminale.pdf" class="download-btn" download>
+                        <i class="fas fa-download"></i> Télécharger PDF
+                    </a>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <p>Plus de cours seront ajoutés régulièrement. Revenez souvent !</p>
+            </div>
+        </div>
+    </div>
+    <!-- Modal pour les épreuves -->
+    <div id="epreuves-modal" class="course-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('epreuves-modal')">&times;</span>
+            <div class="modal-header">
+                <h2>Bibliothèque d'épreuves</h2>
+                <p>Entraînez-vous avec nos épreuves des années précédentes</p>
+            </div>
+            <div class="courses-grid">
+                <div class="course-item">
+                    <h4>BAC 2024 - Mathématiques</h4>
+                    <p>Sujet et corrigé de l'épreuve de mathématiques</p>
+                    <a href="epreuves/bac_2024_maths.pdf" class="download-btn" download>
+                        <i class="fas fa-download"></i> Télécharger
+                    </a>
+                </div>
+                <div class="course-item">
+                    <h4>BEPC 2023 - Français</h4>
+                    <p>Épreuve de français avec corrigé détaillé</p>
+                    <a href="epreuves/bepc_2023_francais.pdf" class="download-btn" download>
+                        <i class="fas fa-download"></i> Télécharger
+                    </a>
+                </div>
+                <div class="course-item">
+                    <h4>Concours ENS 2024</h4>
+                    <p>Sujets des concours d'entrée à l'ENS</p>
+                    <a href="epreuves/concours_ens_2024.pdf" class="download-btn" download>
+                        <i class="fas fa-download"></i> Télécharger
+                    </a>
+                </div>
+                <div class="course-item">
+                    <h4>BAC 2023 - Sciences</h4>
+                    <p>Épreuve de sciences physiques</p>
+                    <a href="epreuves/bac_2023_sciences.pdf" class="download-btn" download>
+                        <i class="fas fa-download"></i> Télécharger
+                    </a>
+                </div>
+                <div class="course-item">
+                    <h4>BEPC 2024 - Mathématiques</h4>
+                    <p>Sujet de mathématiques avec solution</p>
+                    <a href="epreuves/bepc_2024_maths.pdf" class="download-btn" download>
+                        <i class="fas fa-download"></i> Télécharger
+                    </a>
+                </div>
+                <div class="course-item">
+                    <h4>Concours Police 2023</h4>
+                    <p>Épreuves du concours de la Police nationale</p>
+                    <a href="epreuves/concours_police_2023.pdf" class="download-btn" download>
+                        <i class="fas fa-download"></i> Télécharger
+                    </a>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <p>Ces épreuves vous aident à mieux vous préparer aux examens officiels</p>
+            </div>
+        </div>
+    </div>
+    <!-- Statistiques -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>100+</h3>
+                    <p>Étudiants satisfaits</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Cours disponibles</p>
+                </div>
+                <div class="stat-item">
+                    <h3>95%</h3>
+                    <p>Taux de réussite</p>
+                </div>
+                <div class="stat-item">
+                    <h3>2+</h3>
+                    <p>Années d'expérience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Témoignages
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Témoignages</h2>
+                <p>Découvrez ce que disent nos étudiants</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>"Grâce aux cours de SOMAR Groupe, j'ai pu améliorer mes notes en mathématiques de 3 points en seulement un mois. Les explications sont claires et les exercices pertinents."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Étudiant">
+                        </div>
+                        <div class="author-info">
+                            <h4>Kévin D.</h4>
+                            <p>Étudiant en Terminale S</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>"La bibliothèque d'épreuves m'a été d'une grande aide pour me préparer au BAC. Les corrigés détaillés m'ont permis de comprendre mes erreurs et de progresser."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Étudiante">
+                        </div>
+                        <div class="author-info">
+                            <h4>Marie L.</h4>
+                            <p>Étudiante en 1ère L</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>"Le tutorat personnalisé m'a redonné confiance en moi. Mon tuteur a su identifier mes difficultés et adapter sa méthode à mon rythme d'apprentissage."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Étudiant">
+                        </div>
+                        <div class="author-info">
+                            <h4>Thomas M.</h4>
+                            <p>Élève de 3ème</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     -->
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contactez-nous</h2>
+                <p>N'hésitez pas à nous contacter pour toute question ou information</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Adresse</h3>
+                            <p>Maison ALLE<br>Abomey-Calavi, Bénin</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Téléphone</h3>
+                            <p>+229 01 91 27 19 91<br>+229 01 47 67 43 78</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>marcelalle3@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Horaires d'ouverture</h3>
+                            <p>Lun-Ven: 9h-18h<br>Sam: 10h-16h</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nom complet</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Adresse email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Sujet</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">
+                            <i class="fas fa-paper-plane"></i> Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Pied de page -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SOMAR Groupe</h3>
+                    <p>Nous nous engageons à fournir une éducation de qualité accessible à tous, en utilisant des méthodes innovantes et des technologies modernes.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/marcel.alle.398274" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/2290191271991" title="Whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.tiktok.com/@maxdubuzz_officiel" title="Tik-Tok"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#apropos">À propos</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Nos services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">Cours en ligne</a></li>
+                        <li><a href="#services">Bibliothèque d'épreuves</a></li>
+                        <li><a href="#services">Tutorat personnalisé</a></li>
+                        <li><a href="#services">Orientation académique</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Abonnez-vous à notre newsletter pour recevoir les dernières actualités et offres spéciales.</p>
+                    <form id="newsletterForm">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Votre email" required>
+                        </div>
+                        <button type="submit" class="btn">S'abonner</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 SOMAR Groupe. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Templates pour les notifications -->
+    <template id="notification-template">
+        <div class="notification">
+            <div class="notification-content"></div>
+        </div>
+    </template>
+    <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Accès</title>
+    <script>
+        // Forcer tous les types d'accès
+        localStorage.setItem('somar_access', 'true');
+        localStorage.setItem('somar_visitor_id', 'debug_' + Date.now());
+        localStorage.setItem('somar_visitor_name', 'Debug User');
+       
+        sessionStorage.setItem('somar_access', 'true');
+       
+        document.cookie = "somar_access=true; path=/; max-age=2592000";
+        document.cookie = "somar_visitor=debug_user; path=/; max-age=2592000";
+        document.cookie = "somar_visitor_name=Debug; path=/; max-age=2592000";
+       
+        // Afficher les données
+        console.log('=== ACCÈS FORCÉ ===');
+        console.log('localStorage:', {
+            somar_access: localStorage.getItem('somar_access'),
+            somar_visitor_id: localStorage.getItem('somar_visitor_id'),
+            somar_visitor_name: localStorage.getItem('somar_visitor_name')
+        });
+        console.log('Cookies:', document.cookie);
+       
+        // Rediriger après 2 secondes
+        setTimeout(function() {
+            window.location.href = 'index.html';
+        }, 2000);
+    </script>
+</head>
+<body>
+    <h1>Débogage d'accès en cours...</h1>
+    <p>Forçage des données d'accès et redirection dans 2 secondes.</p>
+    <p><a href="index.html">Cliquez ici pour aller directement</a></p>
+</body>
+</html>
