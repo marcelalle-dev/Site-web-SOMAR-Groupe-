@@ -24,7 +24,7 @@ Rendre l'éducation de qualité accessible à tous en proposant une plateforme d
 - **Type** : Plateforme éducative en ligne
 - **Fondateur** : Marcel ALLE
 - **Localisation** : Bénin (ESCAE)
-- **Email admin** : marcelalle3@gmail.com
+- **Email admin** : marcelalledev@gmail.com
 - **Philosophie** : L'éducation est un droit fondamental
 
 **Notre conviction** : Nous croyons que l'apprentissage doit être accessible, engageant et efficace pour tous, quels que soient l'âge, le niveau ou les circonstances.
