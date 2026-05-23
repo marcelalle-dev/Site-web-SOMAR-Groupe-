@@ -306,9 +306,9 @@ Les informations des visiteurs sont :
 
 Pour toute question concernant SOMAR Groupe :
 
-📧 **Email** : marcelalle3@gmail.com  
+📧 **Email** : marcelalledev@gmail.com  
 👤 **Fondateur** : Marcel ALLE  
-📍 **Localisation** : Bénin (ESCAE)
+📍 **Localisation** : Bénin
 
 ---
 
